@@ -6,7 +6,7 @@ var filter = require('gulp-filter')  // 筛选文件
 var uglify = require('gulp-uglify')  // js压缩
 var csso = require('gulp-csso')  // css压缩
 
-gulp.task('default', function() {
+gulp.task('js-css', function() {
     var jsFilter = filter('**/*.js', {restore: true})
     var cssFilter = filter('**/*.css', {restore: true})
     var indexHtmlFilter = filter(['**/*', '!**/index.html'], {restore: true})
@@ -26,7 +26,9 @@ gulp.task('default', function() {
         .pipe(gulp.dest('dist'))
 })
 
-gulp.task('default', function (){
+gulp.task('img', function (){
     return gulp.src('src/img/*.png')
         .pipe(gulp.dest('dist/img'))
 })
+
+gulp.task('default', ['js-css', 'img'])
