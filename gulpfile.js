@@ -7,9 +7,9 @@ var uglify = require('gulp-uglify')  // js压缩
 var csso = require('gulp-csso')  // css压缩
 
 gulp.task('default', function() {
-    var jsFilter = filter('**/*.js', {restore: true});
-    var cssFilter = filter('**/*.css', {restore: true});
-    var indexHtmlFilter = filter(['**/*', '!**/index.html'], {restore: true});
+    var jsFilter = filter('**/*.js', {restore: true})
+    var cssFilter = filter('**/*.css', {restore: true})
+    var indexHtmlFilter = filter(['**/*', '!**/index.html'], {restore: true})
 
     return gulp.src('src/index.html')
         .pipe(useref())
@@ -23,5 +23,10 @@ gulp.task('default', function() {
         .pipe(rev())
         .pipe(indexHtmlFilter.restore)
         .pipe(revReplace())
-        .pipe(gulp.dest('dist'));
-});
+        .pipe(gulp.dest('dist'))
+})
+
+gulp.task('default', function (){
+    return gulp.src('src/img/*.png')
+        .pipe(gulp.dest('dist/img'))
+})
